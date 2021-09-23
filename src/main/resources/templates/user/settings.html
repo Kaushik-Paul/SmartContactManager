@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="user/base::layout(~{::section})">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<section>
+    <div class="pt-5">
+        <div class="pt-2 px-3">
+            <div class="container">
+                <div class="d-flex justify-content-center">
+                    <div class="card text-center " style="width: 50rem">
+                        <div class="card-body">
+                            <!--                            error message-->
+
+                            <div th:if="${session.message}" th:classappend="${session.message.type}" class="alert mt-3"
+                                 role="alert">
+                                <p class="text-center" th:text="${session.message.content}"></p>
+                                <th:block th:text="${#session.removeAttribute('message')}"></th:block>
+                            </div>
+                            <!--                            End of error message-->
+
+                            <h1 class="text-center mb-2">Settings</h1>
+
+
+                            <form th:action="@{/user/change-password}" method="post">
+
+                                <!--                                Username -->
+                                <h3 class="my-3">Change UserName</h3>
+
+                                <!--                                oldUserName field-->
+                                <div class="form-group my-3">
+                                    <input type="text" th:value="${userName}" class="form-control"
+                                           placeholder="Your old UserName">
+                                </div>
+
+                                <!--                                NewUserName field-->
+                                <div class="form-group my-3">
+                                    <input name="newUserName" type="email" class="form-control"
+                                           placeholder="Enter new UserName(Your Email ID)">
+                                </div>
+
+                                <!--                                Password -->
+                                <h3 class="my-3">Change Password</h3>
+
+                                <!--                                old password field-->
+                                <div class="form-group my-3">
+                                    <input name="oldPassword" required type="password" class="form-control"
+                                           placeholder="Enter old password">
+                                </div>
+
+                                <!--                                new password field-->
+                                <div class="form-group my-3">
+                                    <input name="newPassword" required type="password" class="form-control"
+                                           placeholder="Enter new password">
+                                </div>
+
+                                <!--                                retype new password field-->
+                                <div class="form-group">
+                                    <input name="retypeNewPassword" required type="password" class="form-control"
+                                           placeholder="Retype new password">
+                                </div>
+
+                                <!--                                Buttons-->
+                                <div class="d-grid gap-2 col-6 mx-auto my-3">
+                                    <button class="btn btn-success" type="submit">Change</button>
+                                    <button class="btn btn-danger" type="reset">Reset</button>
+                                </div>
+
+                            </form>
+
+
+                        </div>
+
+
+                    </div>
+
+                    <!--                    <h1 class="text-center p-5 bg-danger text-white" th:unless="${contact}">You don't have permission to view this contact</h1>-->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+</body>
+</html>

@@ -1,0 +1,71 @@
+body {
+    background: lightgray;
+}
+
+body, html {
+    height: 100%;
+}
+
+.primarybackgroud {
+    background: #009688;
+}
+
+.primarycolour {
+    color: #009688;
+}
+
+.banner {
+    color: white;
+    background: linear-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, .8)), url("../image/base-image.jpg");
+    height: 100%;
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.my-card {
+    padding: 20px;
+    background: white;
+}
+
+/*login css*/
+#login .container #login-row #login-column #login-box {
+    margin-top: 120px;
+    max-width: 600px;
+    height: 420px;
+    border: 1px solid #9C9C9C;
+    background-color: white;
+    color: #009688;
+}
+
+#login .container #login-row #login-column #login-box #login-form {
+    padding: 20px;
+}
+
+#login .container #login-row #login-column #login-box #login-form #register-link {
+    margin-top: -85px;
+}
+
+.my_profile_picture {
+    width: 35px;
+    height: 35px;
+    object-fit: cover;
+    border-radius: 50%;
+    /*border:1px solid black;*/
+}
+
+/*search css*/
+.search-container {
+    position: relative;
+}
+
+.search-result {
+    position: absolute;
+    background: white;
+    width: 100%;
+    padding: 10px;
+    border: 1px solid gray;
+    display: none;
+}

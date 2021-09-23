@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="base::layout(~{::section})">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<section>
+    <!--    <div class="pt-5">-->
+    <!--        <div class="pt-2 px-3">-->
+    <div class="container">
+        <div class="d-flex justify-content-center">
+
+            <div class="card" style="width: 50rem">
+                <div class="card-body">
+                    <!--                            &lt;!&ndash;                            error message&ndash;&gt;-->
+
+                    <!--                            <div th:if="${session.message}" th:classappend="${session.message.type}" class="alert mt-3" role="alert">-->
+                    <!--                                <p class="text-center" th:text="${session.message.content}"></p>-->
+                    <!--                                <th:block th:text="${#session.removeAttribute('message')}"></th:block>-->
+                    <!--                            </div>-->
+                    <!--                            &lt;!&ndash;                            End of error message&ndash;&gt;-->
+
+                    <div class="text-center">
+                        <h1>About - Smart Contact Manager</h1>
+                    </div>
+
+
+                    <div class="my-2 text-center">
+                        <h3>Developed By</h3>
+                        <img style="height: 250px;width: 250px" class="img-thumbnail" th:src="@{/image/base-image.jpg}"
+                             alt="profile photo">
+                        <h4>Kaushik Paul</h4>
+
+                    </div>
+
+                    <div class="mb-2 text-center">
+                        <h3>Software used</h3>
+                        <img style="height: 150px;width: 150px" class="rounded mx-auto d-block"
+                             th:src="@{/image/intellij2.png}" alt="intellij"/>
+                        <h5>Intellij IDEA Ultimate </h5>
+
+                        <img style="height: 150px;width: 150px" class="rounded mx-auto d-block"
+                             th:src="@{/image/vscode.jpg}" alt="vscode"/>
+                        <h5>Visual Studio Code</h5>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!--                    <h1 class="text-center p-5 bg-danger text-white" th:unless="${contact}">You don't have permission to view this contact</h1>-->
+
+        </div>
+    </div>
+    <!--        </div>-->
+    <!--    </div>-->
+</section>
+
+</body>
+</html>

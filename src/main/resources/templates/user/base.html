@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:fragment="layout(content)">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel="stylesheet" href="" th:href="@{/css/style.css}">
+    <!--  <link rel="stylesheet" href="" th:href="@{/css/sidebar.css}">-->
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+          integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+
+    <title th:text="${title}">Base Template</title>
+
+</head>
+<body>
+
+<!--      navbar-->
+<nav class="navbar navbar-expand-lg navbar-dark py-1 fixed-top primarybackgroud">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Smart Contact Manager</a>
+        <button class="navbar-toggler py-0 btn-sm" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse text-uppercase" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-1 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" th:href="@{/home/}" aria-current="page" href="#">Home</a>
+                </li>
+
+                <!--                <li class="nav-item">-->
+                <!--                  <a class="nav-link active" th:href="@{/about/}" href="#">About</a>-->
+                <!--                </li>-->
+
+                <li class="nav-item">
+                    <a class="nav-link active" th:href="@{/user/profile}"><span th:text="${user.name}"></span></a>
+                </li>
+
+                <li class="nav-item dropdown active">
+                    <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button"
+                       data-bs-toggle="dropdown" aria-expanded="false">
+                        Contacts
+                    </a>
+                    <ul class="dropdown-menu primarybackgroud dropdown-menu-dark  active"
+                        aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item text-white" th:href="@{/user/show-contacts/0}" href="#">View
+                            contacts</a></li>
+                        <li><a class="dropdown-item text-white" th:href="@{/user/add-contact}" href="#">Add contacts</a>
+                        </li>
+                        <li><a class="dropdown-item text-white" th:href="@{/user/settings}" href="#">Settings</a></li>
+                    </ul>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link active" th:href="@{/logout}" href="#">Logout</a>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!--      End of navbar-->
+
+<!--     start of sidebar-->
+
+<!--    <div class="sidebar">-->
+
+<!--      <span onclick="toggleSidebar()" class="crossbtn">&times</span>-->
+
+<!--      <a href="#" class="item"> <i class="fas fa-home"></i> Home</a>-->
+<!--      <a href="#" class="item"> <i class="fas fa-address-book"></i> View Contact</a>-->
+<!--      <a href="#" class="item"><i class="fas fa-user-plus"></i> Add Contact</a>-->
+<!--      <a href="#" class="item"><i class="fas fa-user-circle"></i> Your Profile</a>-->
+<!--      <a href="#" class="item"><i class="fas fa-user-cog"></i> Settings</a>-->
+<!--      <a href="#" class="item"><i class="fas fa-sign-out-alt"></i> Logout</a>-->
+
+<!--      <div class="divider"></div>-->
+<!--    </div>-->
+
+<!--    End of sidebar-->
+
+<!--      Start of content-->
+<div class="content">
+    <!--        <i onclick="toggleSidebar(null)" class="fas fa-bars m-3"></i>-->
+    <div th:replace="${content}"></div>
+</div>
+
+
+<!--    End of sidebar-->
+
+
+<!-- Option 1: Bootstrap Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+        crossorigin="anonymous"></script>
+<script th:href="@{/js/script.js}"></script>
+</body>
+</html>

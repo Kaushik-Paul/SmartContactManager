@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="base::layout(~{::section})">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="my-card mt-3">
+                    <!--                            error message-->
+
+                    <div th:if="${session.message}" th:classappend="${session.message.type}" class="alert" role="alert">
+                        <p class="text-center" th:text="${session.message.content}"></p>
+                        <th:block th:text="${#session.removeAttribute('message')}"></th:block>
+                    </div>
+                    <!--                            End of error message-->
+
+                    <div class="container text-center">
+                        <img style="width:90px" th:src="@{/image/membership.svg}"/>
+                    </div>
+
+                    <h1 class="text-center">Register Here!!</h1>
+
+                    <form action="" th:action="@{/do_register}" method="post"
+                          enctype="multipart/form-data" th:object="${user}">
+
+                        <!--                                Name field-->
+                        <div class="mb-3">
+                            <label for="name_field" class="form-label">Your Name</label>
+                            <input
+                                    name="name"
+                                    type="text"
+                                    class="form-control"
+                                    id="name_field"
+                                    aria-describedby="emailHelp"
+                                    placeholder="Enter Here"
+                                    required="required"
+                                    th:value="${user.name}">
+
+                            <!--                                    <div class="invalid-feedback" th:each="e : ${#fields.errors('name')}"-->
+                            <!--                                    th:text="${e}">-->
+
+                            <!--                                    </div>-->
+                        </div>
+
+                        <!--                                Email field-->
+                        <div class="mb-3">
+                            <label for="email_field" class="form-label">Your Email</label>
+                            <input
+                                    name="email"
+                                    type="email" class="form-control" id="email_field" aria-describedby="emailHelp"
+                                    placeholder="Enter Here"
+                                    required="required"
+                                    th:value="${user.email}">
+                        </div>
+
+                        <!--                                Password field-->
+                        <label for="password_field" class="form-label">Password</label>
+                        <input
+                                name="password"
+                                type="password" id="password_field" class="form-control"
+                                aria-describedby="passwordHelpBlock"
+                                placeholder="Enter Here"
+                                required="required">
+
+                        <div id="passwordHelpBlock" class="form-text">
+                            Your password must be 8-20 characters long, contain letters and numbers, and must not
+                            contain spaces, special characters, or emoji.
+                        </div>
+
+                        <!--                                User about field-->
+                        <div class="form-group my-3">
+                                    <textarea
+                                            name="about" th:text="${user.about}"
+                                            th:value="${user.about}" id="" rows="8" class="form-control"
+                                            placeholder="Write something about yourself"></textarea>
+                        </div>
+
+                        <!--                                User Image-->
+
+                        <div class="custom-file my-3">
+                            <input type="file" name="userImage">
+                        </div>
+
+                        <!--                                Terms and condition agreement-->
+                        <div class="form-group form-check mb-2">
+                            <input
+                                    name="agreement"
+                                    type="checkbox" class="form-check-input" id="agreement">
+                            <label for="agreement">Accept terms and conditions</label>
+                        </div>
+
+
+                        <!--                                button field-->
+                        <div class="container text-center d-grid gap-2">
+                            <button type="submit" class="btn primarybackgroud text-white">Submit</button>
+
+                            <button type="reset" class="btn bg-danger text-white">Reset</button>
+                        </div>
+
+                    </form>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+</body>
+</html>

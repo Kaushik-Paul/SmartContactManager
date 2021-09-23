@@ -1,0 +1,58 @@
+@media only screen and (max-width: 600px) {
+    .sidebar {
+        display: none;
+        width: 80%;
+        background: white;
+        height: 100vh;
+        position: fixed;
+        padding-top: 10px;
+    }
+
+    .content {
+        margin-left: 0%;
+    }
+}
+
+.sidebar {
+    width: 18%;
+    background: white;
+    height: 100%;
+    position: fixed;
+    padding-top: 45px;
+
+}
+
+.sidebar a {
+    display: block;
+    width: 100%;
+    padding-left: 10px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    text-decoration: none;
+    color: #009688;
+
+}
+
+.sidebar a:hover {
+    background: #009688;
+    color: white;
+}
+
+.sidebar .divider {
+    height: .5px;
+    width: 100%;
+    background: #009688;
+    margin-top: 10px;
+}
+
+.content {
+    margin-left: 20%;
+}
+
+.sidebar .crossbtn {
+    position: absolute;
+    top: 0;
+    right: 35px;
+    font-size: 36px;
+    cursor: pointer;
+}
