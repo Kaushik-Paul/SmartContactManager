@@ -19,7 +19,12 @@ import java.util.Random;
 public class HomeController {
 
     @Autowired
-    HomeService homeService;
+    private HomeService homeService;
+
+    @GetMapping("/")
+    public String redirectToHome() {
+        return "redirect:/home";
+    }
 
     //    This is home controller
     @GetMapping("/home")
@@ -99,10 +104,9 @@ public class HomeController {
     @PostMapping("/send-otp")
     public String sendOtp(@RequestParam String email, Model model) {
 
-        System.out.println("EMAIL : " + email);
+        System.out.println("EMAIL: " + email);
 
 //        Generating OTP of 5 digits
-
         int randomNumber = 10000 + new Random().nextInt(90000);
         System.out.println("Random Number : " + randomNumber);
 
