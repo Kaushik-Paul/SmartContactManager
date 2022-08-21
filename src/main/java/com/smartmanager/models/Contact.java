@@ -15,6 +15,7 @@ public class Contact {
     private String work;
     private String email;
     private String phone;
+    @Column(name = "image_url")
     private String imageUrl;
     @Column(length = 1000)
     private String description;
