@@ -100,18 +100,17 @@ public class Contact {
         this.user = user;
     }
 
-//    @Override
-//    public String toString() {
-//        return "Contact{" +
-//                "cid=" + cid +
-//                ", name='" + name + '\'' +
-//                ", secondName='" + secondName + '\'' +
-//                ", work='" + work + '\'' +
-//                ", email='" + email + '\'' +
-//                ", phone='" + phone + '\'' +
-//                ", imageUrl='" + imageUrl + '\'' +
-//                ", description='" + description + '\'' +
-//                ", user=" + user +
-//                '}';
-//    }
+    @Override
+    public String toString() {
+        return "Contact{" +
+                "cid=" + cid +
+                ", name='" + name + '\'' +
+                ", secondName='" + secondName + '\'' +
+                ", work='" + work + '\'' +
+                ", email='" + email + '\'' +
+                ", phone='" + phone + '\'' +
+                ", imageUrl='" + imageUrl + '\'' +
+                ", description='" + description + '\'' +
+                '}';
+    }
 }

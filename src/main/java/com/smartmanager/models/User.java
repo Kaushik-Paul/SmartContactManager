@@ -112,7 +112,6 @@ public class User {
                 ", enabled=" + enabled +
                 ", imageUrl='" + imageUrl + '\'' +
                 ", about='" + about + '\'' +
-                ", contacts=" + contacts +
                 '}';
     }
 }

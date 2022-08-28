@@ -34,7 +34,7 @@ public class UserController {
     public void addCommonData(Model model, Principal principal) {
 
         User user = userService.addCommonDataService(principal);
-//        System.out.println("USER : " + user);
+        LOGGER.info("USER: {} ", user);
         model.addAttribute("user", user);
     }
 
@@ -69,7 +69,6 @@ public class UserController {
             return "user/add_contact_form";
 
         } catch (Exception e) {
-            System.out.println("ERROR" + e.getMessage());
             LOGGER.error(e.getMessage(), e);
             session.setAttribute("message", new Message("Something went wrong!!!" + e.getMessage(), "alert-danger"));
             return "user/add_contact_form";
@@ -112,7 +111,7 @@ public class UserController {
         try {
             userService.deleteContactService(cId, principal, session);
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            LOGGER.error(e.getMessage());
             e.printStackTrace();
         }
         return "redirect:/user/show-contacts/0";
@@ -167,8 +166,8 @@ public class UserController {
                                  @RequestParam String retypeNewPassword,
                                  Principal principal, HttpSession session) {
 
-        System.out.println("Old Password " + oldPassword);
-        System.out.println("New Password " + newPassword);
+        LOGGER.trace("Old Password {}", oldPassword);
+        LOGGER.trace("New Password {}", newPassword);
 
         boolean isSuccessfull = userService.changePassword(newUserName, oldPassword, newPassword, retypeNewPassword,
                 principal, session);
