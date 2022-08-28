@@ -4,6 +4,8 @@ import com.smartmanager.helper.Message;
 import com.smartmanager.helper.StaticEmailInfo;
 import com.smartmanager.models.User;
 import com.smartmanager.repository.UserRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -33,6 +35,8 @@ public class HomeService {
 
     @Autowired
     private EmailSenderService emailSenderService;
+
+    private static final Logger logger = LoggerFactory.getLogger(HomeService.class);
 
 
 //    Service to add new User

@@ -47,7 +47,7 @@ public class UserService {
     //    Service to send the common user data
     public User addCommonDataService(Principal principal) {
         String userName = principal.getName();
-//        System.out.println("USERNAME : "+userName);
+//        LOGGER.info("USERNAME : "+userName);
 
         //   getting the user using email
         User user = userRepository.getUserByUserName(userName);
@@ -64,7 +64,7 @@ public class UserService {
 //            processing and uploading file
 
         if (file.isEmpty()) {
-            System.out.println("File is empty");
+            LOGGER.info("File is empty");
             contact.setImageUrl("contact.png");
         } else {
 //                uploading the file
@@ -72,7 +72,7 @@ public class UserService {
 //                File saveFile = new ClassPathResource("static/profilephotos").getFile();
 //                Path path = Paths.get(saveFile.getAbsolutePath() + File.separator + file.getOriginalFilename());
 //                Files.copy(file.getInputStream(), path, StandardCopyOption.REPLACE_EXISTING);
-//                System.out.println("Image is uploading");
+//                LOGGER.info("Image is uploading");
 
 
 //                File convertFile = new File("E:\\Codes\\Spring Boot Projects\\Smart Contact Manager\\src\\main\\resources\\static\\profilephotos\\" + file.getOriginalFilename());
@@ -90,8 +90,7 @@ public class UserService {
 
         this.userRepository.saveAndFlush(user);
 
-        System.out.println("Added to data base");
-        System.out.println("CONTACT DATA " + contact);
+        LOGGER.info("Added to data base");
         LOGGER.info("Contact Data {}", contact);
         session.setAttribute("message", new Message("Your Contact has been Added!!!!", "alert-success"));
     }
@@ -113,9 +112,9 @@ public class UserService {
 //    Service for showing particular Contact
 
     public void showContactDetailService(int cId, Principal principal, Model model) {
-        //        System.out.println("CID " + cId);
+        //        LOGGER.info("CID " + cId);
 
-        System.out.println(bCryptPasswordEncoder.encode("root"));
+        LOGGER.info(bCryptPasswordEncoder.encode("root"));
         Optional<Contact> contactOptional = contactRepository.findById(cId);
         Contact contact = contactOptional.get();
 
@@ -148,6 +147,7 @@ public class UserService {
             }
 
 //            deleting from database
+            LOGGER.trace("Contact deleted {}", contact);
             contact.setUser(null);
             contactRepository.delete(contact);
             session.setAttribute("message", new Message("Contact deleted successfully", "alert-success"));
@@ -200,6 +200,7 @@ public class UserService {
         User user = userRepository.getUserByUserName(principal.getName());
         contact.setUser(user);
         contactRepository.save(contact);
+        LOGGER.info("Contact Updated {}", contact);
         session.setAttribute("message", new Message("Your Contact is Updated!!!!", "alert-success"));
 
     }

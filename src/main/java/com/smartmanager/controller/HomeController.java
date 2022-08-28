@@ -3,6 +3,8 @@ package com.smartmanager.controller;
 import com.smartmanager.helper.Message;
 import com.smartmanager.models.User;
 import com.smartmanager.service.HomeService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,6 +22,8 @@ public class HomeController {
 
     @Autowired
     private HomeService homeService;
+
+    private static final Logger logger = LoggerFactory.getLogger(HomeService.class);
 
     @GetMapping("/")
     public String redirectToHome() {
@@ -56,21 +60,21 @@ public class HomeController {
                                        boolean agreement, Model model, HttpSession session) {
         try {
             if (!agreement) {
-                System.out.println("You have not agreed the terms and conditions");
+                logger.error("You have not agreed the terms and conditions");
                 throw new Exception("You have not agreed the terms and conditions");
             }
 
 
 //            if (result1.hasErrors()) {
-//                System.out.println("ERROR "+result1.toString());
+//                logger.info("ERROR "+result1.toString());
 //                model.addAttribute("user", user);
 //                return "signup";
 //            }
 
 
             User result = homeService.registerUserService(user, multipartFile, session, model);
-            System.out.println("Agreement " + agreement);
-            System.out.println("USER " + user.toString());
+            logger.trace("Agreement {}", agreement);
+            logger.info("USER {}", user.toString());
             model.addAttribute("user", result);
             model.addAttribute("user", new User());
             return "signup";
@@ -104,11 +108,11 @@ public class HomeController {
     @PostMapping("/send-otp")
     public String sendOtp(@RequestParam String email, Model model) {
 
-        System.out.println("EMAIL: " + email);
+        logger.info("EMAIL: {}", email);
 
 //        Generating OTP of 5 digits
         int randomNumber = 10000 + new Random().nextInt(90000);
-        System.out.println("Random Number : " + randomNumber);
+        logger.info("Random Number : {}", randomNumber);
 
         model.addAttribute("title", "Verify - OTP");
 

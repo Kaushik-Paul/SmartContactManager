@@ -1,5 +1,7 @@
 package com.smartmanager.service;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.FileSystemResource;
@@ -24,7 +26,7 @@ public class EmailSenderService {
     @Value("${external-data.welcome-email-gif-path}")
     private String welcomeEmailGif;
 
-//    Logger myLogger = LoggerFactory.getLogger(EmailSenderService.class);
+    private static final Logger logger = LoggerFactory.getLogger(EmailSenderService.class);
 
     public void sendSimpleEmail(String toEmail, String subject, String body) {
 
@@ -55,6 +57,6 @@ public class EmailSenderService {
 
         mailSender.send(mimeMessage);
 
-        System.out.println("Email Send !!! " + mimeMessage);
+        logger.info("Email send to {} !!!", toEmail);
     }
 }
