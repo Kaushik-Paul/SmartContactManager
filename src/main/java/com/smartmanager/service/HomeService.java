@@ -1,6 +1,7 @@
 package com.smartmanager.service;
 
 import com.smartmanager.helper.Message;
+import com.smartmanager.helper.StaticEmailInfo;
 import com.smartmanager.models.User;
 import com.smartmanager.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.mail.MessagingException;
 import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -29,10 +31,13 @@ public class HomeService {
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
 
+    @Autowired
+    private EmailSenderService emailSenderService;
+
 
 //    Service to add new User
 
-    public User registerUserService(User user, MultipartFile multipartFile, HttpSession session, Model model) throws IOException {
+    public User registerUserService(User user, MultipartFile multipartFile, HttpSession session, Model model) throws IOException, MessagingException {
         user.setRole("ROLE_USER");
         user.setEnabled(true);
 
@@ -54,6 +59,12 @@ public class HomeService {
         User result = userRepository.save(user);
 
         session.setAttribute("message", new Message("Successfully Registered!!!!", "alert-success"));
+
+        // Send Registration Successful mail to sender
+        String subject = StaticEmailInfo.welcomeEmailSubject;
+        String body = StaticEmailInfo.welcomeEmailBody;
+
+        emailSenderService.sendEmailWithAttachment(user.getEmail(), subject, body);
         return result;
     }
 }
